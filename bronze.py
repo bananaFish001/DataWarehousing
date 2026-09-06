@@ -1,6 +1,6 @@
 import duckdb
 
-con = duckdb.connect(':memory:')
+con = duckdb.connect('DataWarehouse.duckdb')
 
 _ = con.execute("""
     CREATE SCHEMA IF NOT EXISTS bronze;
@@ -91,6 +91,10 @@ _ = con.execute(
     """
 )
 
+_ = con.execute("""
+    TRUNCATE TABLE bronze.crm_cust_info;
+""")
+
 _ = con.execute(
     """
     COPY bronze.crm_cust_info
@@ -98,3 +102,11 @@ _ = con.execute(
     (HEADER, DELIMITER ',')
     """
 )
+
+df1 = con.sql(
+    """
+    select count(*) from bronze.crm_cust_info
+    """
+)
+
+print(df1)
