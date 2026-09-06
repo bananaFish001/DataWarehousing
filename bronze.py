@@ -8,18 +8,9 @@ _ = con.execute("""
     CREATE SCHEMA IF NOT EXISTS gold;
 """)
 
-_ = con.execute("""
-    DROP TABLE IF EXISTS bronze.crm_cust_info;
-    DROP TABLE IF EXISTS bronze.crm_prd_info;
-    DROP TABLE IF EXISTS bronze.crm_sales_details;
-    DROP TABLE IF EXISTS bronze.erp_cust_az12;
-    DROP TABLE IF EXISTS bronze.erp_loc_a101;
-    DROP TABLE IF EXISTS bronze.erp_px_cat_g1v2;
-""")
-
 _ = con.execute(
     """
-    create table bronze.crm_cust_info(
+    create table IF NOT EXISTS bronze.crm_cust_info(
         cst_id INT,
         cst_key NVARCHAR(50),
         cst_firstname NVARCHAR(50),
@@ -33,7 +24,7 @@ _ = con.execute(
 
 _ = con.execute(
     """
-    create table bronze.crm_prd_info(
+    create table IF NOT EXISTS bronze.crm_prd_info(
         prd_id INT,
         prd_key NVARCHAR(50),
         prd_nm NVARCHAR(50),
@@ -47,7 +38,7 @@ _ = con.execute(
 
 _ = con.execute(
     """
-    create table bronze.crm_sales_details(
+    create table IF NOT EXISTS bronze.crm_sales_details(
         sls_ord_num NVARCHAR(50),
         sls_prd_key NVARCHAR(50),
         sls_cust_id NVARCHAR(50),
@@ -63,7 +54,7 @@ _ = con.execute(
 
 _ = con.execute(
     """
-    create table bronze.erp_cust_az12 (
+    create table IF NOT EXISTS bronze.erp_cust_az12 (
         CID NVARCHAR(50),
         BDATE DATE,
         GEN NVARCHAR(50)
@@ -73,7 +64,7 @@ _ = con.execute(
 
 _ = con.execute(
     """
-    create table bronze.erp_loc_a101 (
+    create table IF NOT EXISTS bronze.erp_loc_a101 (
         CID NVARCHAR(50),
         CNTRY NVARCHAR(50)
     )
@@ -82,7 +73,7 @@ _ = con.execute(
 
 _ = con.execute(
     """
-    create table bronze.erp_px_cat_g1v2 (
+    create table IF NOT EXISTS bronze.erp_px_cat_g1v2 (
         ID NVARCHAR(50),
         CAT NVARCHAR(50),
         SUBCAT NVARCHAR(50),
