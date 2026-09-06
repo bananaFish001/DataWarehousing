@@ -90,3 +90,11 @@ _ = con.execute(
     )
     """
 )
+
+_ = con.execute(
+    """
+    COPY bronze.crm_cust_info
+    FROM '/home/pinaka/projects/DataWarehouse/source_crm/cust_info.csv'
+    (HEADER, DELIMITER ',')
+    """
+)
