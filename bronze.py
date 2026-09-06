@@ -53,3 +53,33 @@ _ = con.execute(
     )
     """
 )
+
+_ = con.execute(
+    """
+    create table bronze.erp_cust_az12 (
+        CID NVARCHAR(50),
+        BDATE DATE,
+        GEN NVARCHAR(50)
+    )
+    """
+)
+
+_ = con.execute(
+    """
+    create table bronze.erp_loc_a101 (
+        CID NVARCHAR(50),
+        CNTRY NVARCHAR(50)
+    )
+    """
+)
+
+_ = con.execute(
+    """
+    create table bronze.erp_px_cat_g1v2 (
+        ID NVARCHAR(50),
+        CAT NVARCHAR(50),
+        SUBCAT NVARCHAR(50),
+        MAINTENANCE NVARCHAR(50)
+    )
+    """
+)
