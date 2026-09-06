@@ -2,13 +2,20 @@ import duckdb
 
 con = duckdb.connect(':memory:')
 
-_ = con.execute(
-    """
-    create schema Bronze;
-    create schema Silver;
-    create schema Gold;
-    """
-)
+_ = con.execute("""
+    CREATE SCHEMA IF NOT EXISTS bronze;
+    CREATE SCHEMA IF NOT EXISTS silver;
+    CREATE SCHEMA IF NOT EXISTS gold;
+""")
+
+_ = con.execute("""
+    DROP TABLE IF EXISTS bronze.crm_cust_info;
+    DROP TABLE IF EXISTS bronze.crm_prd_info;
+    DROP TABLE IF EXISTS bronze.crm_sales_details;
+    DROP TABLE IF EXISTS bronze.erp_cust_az12;
+    DROP TABLE IF EXISTS bronze.erp_loc_a101;
+    DROP TABLE IF EXISTS bronze.erp_px_cat_g1v2;
+""")
 
 _ = con.execute(
     """
